@@ -1,0 +1,27 @@
+{% extends 'base/nav.html' %}
+
+{% block content %}
+
+    <div class='container bg-success mt-3'>
+    <div class="row ">      
+      {% comment %} Photos {% endcomment %}
+        <div class="col ">
+            <div class="row mt-5">
+                {% for book in books   %}
+                <div class="col-md-5 m-auto ">
+                   <div class="card my-2">
+                    <img class="image-thumbail" src="{{book.image.url}}" alt="">
+                    <div class="card-body">
+                        <p> <small>Category : {{book.category.name}}</small></p>                       
+                        <p> <small>Auther : {{book.auther}}</small></p>
+                        <p><small>Book name : {{book.book_name}}</small></p>                
+                    </div>
+                    <a class="btn btn-outline-dark btn-sm m-1" href="{% url 'view_book' book.id %}">View</a>
+                   </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

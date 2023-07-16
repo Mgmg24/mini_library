@@ -1,0 +1,27 @@
+{% load static %}
+<html>
+    <head>
+        <link rel="stylesheet" href=" {% static 'css/bootstrap.min.css' %}">
+    </head>
+    <body class='container mt-3 '>  
+    <nav class="navbar bg-body-secondary ">
+          
+          <div class="text-center  m-auto mt-2 mb-2 fs-5"> 
+            <div>mini-library</div><hr>
+            <div class="btn-group mb-3 m-auto ">
+              <button class="btn btn-outline-success btn-sm ">
+                <a class="m-auto " href="{% url 'search_view'  %}">အားလုံး</a>
+              </button>
+              {% for nav_category in nav_vategory%}
+              <button class="btn btn-outline-success btn-sm">
+                 <a class="m-auto " href="{% url 'category_books' nav_category.id %}">{{nav_category.name}}</a>
+              </button>
+              {% endfor %}
+            </div>
+          </div>       
+          
+          </nav>     
+    {% block content %}
+    {% endblock content %}
+  </body>
+</html>

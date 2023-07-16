@@ -1,0 +1,29 @@
+{% extends 'base/nav.html' %}
+
+{% block content %}
+<body class="m-5">
+    <div class="container bg-success">
+    <div class="row ">      
+      {% comment %} Photos {% endcomment %}
+        <div class="col ">
+            <div class="row mt-5">            
+                <div class="col-md-5 m-auto ">
+                   <div class="card my-2">
+                    <img class="image-thumbail" src="{{book.image.url}}" alt="">
+                    <div class="card-body">
+                        <p> <small> category : {{book.category.name}}</small></p>                       
+                        <p> <small>author : {{book.auther}}</small></p>
+                        <p><small>book name : {{book.book_name}}</small></p>                
+                    </div>
+                    <a class="btn btn-outline-dark btn-sm m-1" href="{{book.pdf.url}}" download="{{book.pdf.url}}">
+                        download
+                    </a>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+{% endblock content %}

@@ -1,0 +1,40 @@
+{% extends 'base/nav.html' %}
+
+{% block content %}
+<div class="ml-20 mt-4">
+      <form class="d-flex ml-20" role="search" method="get" action="{% url 'search_view' %}"> 
+        {% csrf_token %}      
+        <input class="form-control me-2" type="search" placeholder="စာအုပ်အမည်" aria-label="Search" name="search" value="{{search}}">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+</div>
+
+
+    <div class='container bg-success'>
+    <div class="row ">      
+      {% comment %} Photos {% endcomment %}
+        <div class="col ">
+            <div class="row mt-5">
+                {% for book in posts   %}
+                <div class="col-md-5 m-auto ">
+                   <div class="card my-2">
+                    <img class="image-thumbail" src="{{book.image.url}}" alt="">
+                    <div class="card-body">
+                        <p> <small>Category : {{book.category.name}}</small></p>                       
+                        <p> <small>Author : {{book.auther}}</small></p>
+                        <p><small>Book name : {{book.book_name}}</small></p>                
+                    </div>
+                    <a class="btn btn-outline-dark btn-sm m-1" href="{% url 'view_book' book.id %}">View</a>
+                   </div>
+                </div>
+                {% empty%}
+                <div class='alert alert-danger text-center'>ရှာနေတဲ့စာအုပ် မရှိသေးပါ။</div>
+                <div>....</div>
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
