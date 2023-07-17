@@ -24,6 +24,7 @@ class SearchView(ListView):
     
     def get_context_data(self,**kwargs):
         context=super().get_context_data(**kwargs)
+        context['posts'] = context['posts'].order_by('-create_at')
         
         search=self.request.GET.get('search') or ''
         if search:
